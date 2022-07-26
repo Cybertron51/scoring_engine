@@ -69,9 +69,12 @@ pub fn package_vuln(points: u64, comment: String, answer: String) -> Vuln { // f
 fn main() {
     
     let mut vulns: Vec<Vuln> = Vec::new();    // vector of Vuln structs
+    // example vulns
     vulns.push(config_vuln(4, "solved this vuln".to_string(), "/etc/passwd".to_string(), "user1".to_string()));
     vulns.push(package_vuln(4, "package found".to_string(), "telnet".to_string()));
     vulns.push(config_vuln(6, "host.conf configured good".to_string(), "/etc/host.conf".to_string(), "multi on".to_string()));
+    // put vulns here as vulns.push(<config_vuln or package_vuln>(points, description, the file the vuln is in, the keyword));
+    // please append .to_string() to any strings in the arguments or it will break :(
     let start = time::Instant::now();    // start time
     loop {
 	let mut scoring_report = String::new();
